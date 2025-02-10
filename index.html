@@ -2,36 +2,94 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Puerco Games - En Construcción</title>
+  <title>Puercogames - En Construcción</title>
+  <!-- Fuente retro de Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+
   <style>
-    body {
+    /* Reset básico */
+    * {
       margin: 0;
       padding: 0;
-      background: #000; /* Fondo negro */
-      color: #fff;      /* Texto en blanco */
-      font-family: sans-serif;
-      display: flex;    /* Para centrar contenido */
+      box-sizing: border-box;
+    }
+
+    /* Estilos generales */
+    body {
+      font-family: 'Press Start 2P', monospace, sans-serif;
+      color: #fff;
+      background: #000;
+      min-height: 100vh;
+      display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      height: 100vh;    /* Ocupa la pantalla completa */
+      justify-content: center;
+      position: relative; /* Para el pseudo-elemento del fondo */
+      overflow: hidden;   /* Evita scroll extra por el pseudo-elemento */
     }
-    .logo {
-      max-width: 300px;   /* Ajusta el tamaño máximo de la imagen */
-      width: 80%;         /* O un ancho en porcentaje para ser responsivo */
-      margin-bottom: 30px;
+
+    /* Pseudo-elemento para la imagen de fondo */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      /* Imagen con "pixeles" + degrade a negro */
+      background:
+        linear-gradient(rgba(0,0,0,0) 40%, #000 90%),
+        url("https://raw.githubusercontent.com/jesusmarin/pixel-background-example/main/pixel-pattern.png");
+      background-repeat: repeat;
+      background-position: center top;
+      background-size: auto 400px; /* Ajustar a tu gusto */
+      opacity: 0.3; /* Ajustar si quieres más/menos visible */
+      z-index: 0;   /* Debajo del contenido */
     }
-    h1 {
-      font-size: 2em;
-      margin: 0 20px;
+
+    /* Contenedor principal */
+    .container {
+      position: relative; /* Para quedar por encima del pseudo-elemento */
+      z-index: 1;         /* Asegura el contenido esté visible */
       text-align: center;
+      padding: 20px;
+    }
+
+    /* Logo */
+    .logo {
+      width: 200px;  /* Ajusta el tamaño a tu gusto */
+      max-width: 80%;
+      margin-bottom: 20px;
+    }
+
+    /* Título o mensaje */
+    h1 {
+      margin-bottom: 20px;
+      font-size: 1.2rem; /* Press Start 2P es muy pequeña, ajusta */
+      line-height: 1.5;
+    }
+
+    /* Texto adicional */
+    p {
+      font-size: 0.9rem;
+    }
+
+    /* Animación parpadeo para darle un estilo retro */
+    .blink {
+      animation: blink 1.5s infinite step-start;
+    }
+
+    @keyframes blink {
+      50% { visibility: hidden; }
     }
   </style>
 </head>
 <body>
-  <!-- Sustituye "logo.png" por la ruta real de tu imagen -->
-  <img class="logo" src="./logo.jpeg" alt="Logo Puercogames" />
-  
-  <h1>Estamos en renovando.<br>¡Volveremos pronto!</h1>
+  <div class="container">
+    <!-- Ajusta la ruta/logo según corresponda -->
+    <img class="logo" src="./logo.jpeg" alt="Logo Puercogames" />
+    <h1>Estamos renovando.<br>¡Volveremos pronto!</h1>
+    <p><span class="blink">_</span></p>
+  </div>
 </body>
 </html>
+<body>
